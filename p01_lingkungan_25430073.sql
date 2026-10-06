@@ -1,5 +1,5 @@
 -- p01_lingkungan_25430073.sql
-
+-- Password sengaja diganti penanda, JANGAN commit password asli
 -- D.2 Memeriksa lingkungan MariaDB
 SELECT VERSION(), CURRENT_USER();
 SHOW DATABASES;
