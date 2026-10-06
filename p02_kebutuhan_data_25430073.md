@@ -172,7 +172,7 @@ Keterangan:
 | `nama_pelanggan` | Pelanggan | Nama pelanggan | Aulia | Tidak boleh kosong | Admin |
 | `no_hp_pelanggan` | Pelanggan | Nomor HP pelanggan | 081234567890 | Data pribadi | Admin |
 | `email_pelanggan` | Pelanggan | Alamat email pelanggan | aulia@email.com | Format email valid | Admin |
-| `alamat_pelanggan` | Pelanggan | Alamat pelanggan | Jl. Contoh No. 1 | Data pribadi | Admin |
+| `alamat_pelanggan` | Pelanggan | Alamat pelanggan yang tersimpan pada data akun | Jl. Contoh No. 1 | Data pribadi | Admin |
 | `kode_barang` | Barang | Kode unik barang | BRG-001 | Unik | Admin |
 | `nama_barang` | Barang | Nama barang | Buku Tulis | Tidak boleh kosong | Admin |
 | `kategori_barang` | Barang | Kategori barang | Alat Tulis | Tidak boleh kosong | Admin |
@@ -181,56 +181,44 @@ Keterangan:
 | `batas_minimum_stok` | Barang | Batas minimum jumlah stok | 10 | Bilangan bulat ≥ 0 | Admin |
 | `no_pesanan` | Pesanan | Nomor unik pesanan | ORD-2026-001 | Unik | Admin |
 | `tanggal_pesanan` | Pesanan | Tanggal dan waktu pesanan dibuat | 2026-10-06 10:00 | Wajib dicatat | Admin |
+| `id_pelanggan` | Pesanan | Identitas pelanggan yang membuat pesanan | PLG-001 | Mengacu pada data Pelanggan | Admin |
 | `status_pesanan` | Pesanan | Status proses pesanan | Diproses | Mengikuti status yang ditetapkan sistem | Admin |
-| `total_pembayaran` | Pesanan | Total nilai pembayaran pesanan | 30000 | Bilangan bulat ≥ 0 | Admin |
+| `alamat_pengiriman` | Pesanan | Alamat tujuan yang digunakan untuk pesanan | Jl. Contoh No. 1 | Disimpan pada pesanan | Admin |
+| `ongkos_kirim` | Pesanan | Biaya pengiriman yang dikenakan pada pesanan | 10000 | Bilangan bulat ≥ 0 | Admin |
+| `total_pembayaran` | Pesanan | Total nilai pembayaran pesanan | 40000 | Bilangan bulat ≥ 0 | Admin |
+| `no_pesanan` | Detail Pesanan | Nomor pesanan yang memiliki detail barang | ORD-2026-001 | Mengacu pada data Pesanan | Admin |
+| `kode_barang` | Detail Pesanan | Kode barang yang dipesan | BRG-001 | Mengacu pada data Barang | Admin |
 | `qty` | Detail Pesanan | Jumlah barang dalam pesanan | 2 | Bilangan bulat > 0 | Admin |
 | `harga_saat_transaksi` | Detail Pesanan | Harga barang ketika dipesan | 15000 | Disimpan agar harga transaksi lama tetap tercatat | Admin |
 | `subtotal` | Detail Pesanan | Nilai harga barang berdasarkan jumlah yang dipesan | 30000 | Nilai turunan dari qty × harga saat transaksi | Admin |
 | `id_pembayaran` | Pembayaran | Identitas unik pembayaran | PAY-001 | Unik | Admin |
+| `no_pesanan` | Pembayaran | Nomor pesanan yang dibayarkan | ORD-2026-001 | Mengacu pada data Pesanan | Admin |
 | `tanggal_pembayaran` | Pembayaran | Tanggal dan waktu pembayaran | 2026-10-06 10:15 | Wajib dicatat | Admin |
 | `metode_pembayaran` | Pembayaran | Metode pembayaran yang digunakan | Transfer | Diisi sesuai metode yang tersedia | Admin |
-| `jumlah_pembayaran` | Pembayaran | Jumlah uang yang dibayarkan | 30000 | Bilangan bulat ≥ 0 | Admin |
+| `jumlah_pembayaran` | Pembayaran | Jumlah uang yang dibayarkan | 40000 | Bilangan bulat ≥ 0 | Admin |
 | `status_pembayaran` | Pembayaran | Status pembayaran | Lunas | Mengikuti status pembayaran | Admin |
 | `id_pengiriman` | Pengiriman | Identitas unik pengiriman | KRM-001 | Unik | Admin |
-| `alamat_tujuan` | Pengiriman | Alamat tujuan pengiriman | Jl. Contoh No. 1 | Data pribadi | Admin |
+| `no_pesanan` | Pengiriman | Nomor pesanan yang dikirim | ORD-2026-001 | Mengacu pada data Pesanan | Admin |
 | `jasa_pengiriman` | Pengiriman | Jasa yang digunakan untuk mengirim pesanan | Kurir A | Tidak boleh kosong | Admin |
 | `nomor_resi` | Pengiriman | Nomor resi pengiriman | RESI123456 | Dapat kosong sebelum barang dikirim | Admin |
 | `status_pengiriman` | Pengiriman | Status proses pengiriman | Diproses | Mengikuti status pengiriman | Admin |
+| `poin_loyalitas` | Pelanggan | Jumlah poin loyalitas yang dimiliki pelanggan | 25 | Bilangan bulat ≥ 0 | Admin |
 
-## 9. Kebutuhan non-fungsional data (volume, retensi, privasi)
+### 9.1 Volume Data
 
-### 9.1 Volume data
+- Sistem harus dapat menyimpan data pelanggan, barang, pesanan, pembayaran, dan pengiriman yang bertambah sesuai aktivitas toko.
+- Data transaksi harus dapat ditelusuri berdasarkan nomor pesanan.
 
-- Sistem harus dapat menyimpan data pesanan dan transaksi yang terus bertambah seiring aktivitas toko.
-- Data pesanan harus dapat ditelusuri berdasarkan nomor pesanan.
-- Perkiraan volume transaksi harian adalah 50 transaksi per hari.
-- Batas maksimal item dalam satu transaksi adalah 4 item.
+### 9.2 Retensi Data
 
-### 9.2 Retensi data
+- Data pesanan dan pembayaran perlu dipertahankan agar transaksi yang telah dilakukan tetap dapat ditelusuri.
+- Harga barang pada saat transaksi harus tetap tersimpan sehingga informasi transaksi lama tidak berubah ketika harga barang saat ini diperbarui.
 
-- Data pesanan dan pembayaran perlu dipertahankan untuk kebutuhan pencatatan dan pelaporan.
-- Data transaksi lama tetap perlu dapat ditelusuri berdasarkan nomor pesanan.
-- Harga barang pada saat transaksi perlu tetap tersimpan agar informasi transaksi lama tidak berubah ketika harga barang saat ini diperbarui.
-
-### 9.3 Privasi dan hak akses
+### 9.3 Privasi dan Hak Akses
 
 - Nomor HP, email, dan alamat pelanggan merupakan data pribadi.
-- Data pribadi pelanggan hanya dapat diakses oleh admin yang memiliki hak akses.
-- Data pembayaran hanya dapat diakses oleh pihak yang memiliki kewenangan untuk mengelola transaksi.
-
-### 9.4 Parameter project
-
-Perhitungan parameter P berdasarkan NIM:
-
-P = (73 mod 9) + 1  
-P = 1 + 1  
-P = 2
-
-Dengan nilai P = 2, diperoleh:
-
-- Batas maksimal item per transaksi = P + 2 = 4 item.
-- Persentase diskon atau denda harian (dalam ribu rupiah) = 2.
-- Perkiraan volume transaksi harian = 40 + (5 × P) = 50 transaksi per hari.
+- Data pribadi pelanggan hanya boleh diakses oleh admin yang memiliki hak akses.
+- Data pembayaran hanya boleh diakses oleh pihak yang memiliki kewenangan untuk mengelola transaksi.
 
 ### 9.4 Parameter project
 
@@ -245,24 +233,103 @@ Dengan nilai P = 2, diperoleh:
 - Persentase diskon atau denda harian (dalam ribu rupiah) = 2.
 - Perkiraan volume transaksi harian = 40 + (5 × P) = 50 transaksi per hari.
 
-## 10. Isu kualitas data yang diantisipasi
-
-Beberapa isu kualitas data yang mungkin terjadi pada Toko Daring Aulia Indah adalah sebagai berikut:
+### 10. Isu kualitas data yang diantisipasi
 
 1. **Data pelanggan ganda**  
-   Satu pelanggan dapat tercatat lebih dari satu kali sehingga menyebabkan data pelanggan menjadi tidak konsisten. Hal ini dapat dikurangi dengan memastikan `id_pelanggan` bersifat unik dan data pelanggan diperiksa sebelum ditambahkan.
+   Data pelanggan dapat tercatat lebih dari satu kali apabila identitas pelanggan tidak diperiksa dengan baik saat pendaftaran.
 
 2. **Ketidaksesuaian stok barang**  
-   Stok yang tercatat di sistem dapat berbeda dengan stok sebenarnya akibat kesalahan pencatatan barang masuk atau barang yang terjual. Data stok perlu diperbarui berdasarkan transaksi yang terjadi dan tidak boleh bernilai negatif.
+   Jumlah stok yang tercatat dapat berbeda dengan stok sebenarnya apabila setiap transaksi masuk dan keluar tidak dicatat dengan benar.
 
 3. **Perubahan harga pada transaksi lama**  
-   Harga barang dapat berubah setelah suatu pesanan dibuat. Jika hanya menggunakan harga barang saat ini, nilai transaksi lama dapat berubah. Oleh karena itu, `harga_saat_transaksi` perlu disimpan pada Detail Pesanan.
+   Harga barang saat ini dapat berubah sehingga harga pada transaksi lama harus tetap menggunakan harga saat transaksi dilakukan.
 
 4. **Ketidaksesuaian data pembayaran**  
-   Jumlah atau status pembayaran dapat tidak sesuai dengan pesanan. Data pembayaran perlu dikaitkan dengan `no_pesanan` dan status pembayaran harus diperbarui berdasarkan hasil konfirmasi pembayaran.
+   Data pembayaran dapat tidak sesuai dengan pesanan apabila jumlah, metode, atau status pembayaran tidak dicatat dengan benar.
 
 5. **Alamat pengiriman tidak lengkap atau salah**  
-   Kesalahan alamat dapat menyebabkan proses pengiriman terganggu. Alamat tujuan perlu dicatat dengan lengkap dan diperiksa sebelum pesanan dikirim.
+   Alamat pengiriman yang tidak lengkap atau salah dapat menyebabkan pesanan sulit atau gagal dikirim.
 
 6. **Nomor resi tidak sesuai**  
-   Nomor resi yang salah dapat menyulitkan pelanggan dalam melacak pesanan. Nomor resi harus dicatat sesuai dengan informasi dari jasa pengiriman.
+   Nomor resi yang salah atau tidak sesuai dengan pesanan dapat menyebabkan proses pelacakan pengiriman menjadi tidak akurat.
+
+   ## 11. Latihan 1 - Poin Loyalitas
+
+### 11.1 Elemen data tambahan
+
+Untuk mendukung fitur poin loyalitas, diperlukan elemen data tambahan pada entitas Pelanggan:
+
+- `poin_loyalitas`
+
+Elemen `poin_loyalitas` digunakan untuk menyimpan jumlah poin yang dimiliki oleh pelanggan.
+
+### 11.2 Aturan bisnis tambahan
+
+| Kode | Aturan Bisnis |
+|---|---|
+| AB-10 | Setiap kelipatan Rp10.000 yang dibelanjakan oleh pelanggan menghasilkan 1 poin loyalitas. |
+| AB-11 | Setiap 50 poin loyalitas dapat ditukarkan dengan potongan harga sebesar Rp5.000. |
+
+### 11.3 Kebutuhan informasi tambahan
+
+| Kode | Kebutuhan Informasi | Sumber Data |
+|---|---|---|
+| KI-06 | Menampilkan jumlah poin loyalitas yang dimiliki setiap pelanggan. | Pelanggan, Pesanan |
+| KI-07 | Menampilkan pelanggan yang memiliki minimal 50 poin dan dapat menukarkan poinnya dengan potongan harga. | Pelanggan |
+
+### 11.4 Perubahan pada Matriks CRUD
+
+Karena poin loyalitas berkaitan dengan data pelanggan dan transaksi, proses pembuatan pesanan dapat memperbarui jumlah poin pelanggan.
+
+| Proses Bisnis | Pelanggan | Barang | Pesanan | Detail Pesanan | Pembayaran | Pengiriman |
+|---|---|---|---|---|---|---|
+| PB-01 Mengelola dan melihat katalog barang | R | C, R, U |  |  |  |  |
+| PB-02 Membuat pesanan | R, U | R | C | C |  |  |
+| PB-03 Mencatat pembayaran | R |  | R, U |  | C |  |
+| PB-04 Memproses dan mengirim pesanan | R |  | R, U |  | R | C, U |
+| PB-05 Mendaftarkan pelanggan | C |  |  |  |  |  |
+
+### 11.5 Perubahan kamus data
+
+Tambahkan elemen berikut pada entitas Pelanggan:
+
+| Nama elemen data | Entitas | Deskripsi | Contoh | Aturan/Keterangan | Penanggung jawab |
+|---|---|---|---|---|---|
+| `poin_loyalitas` | Pelanggan | Jumlah poin loyalitas yang dimiliki pelanggan | 25 | Bilangan bulat ≥ 0 | Admin |
+
+## 12. Latihan 2 - Memperbaiki Kebutuhan yang Masih Umum
+
+Beberapa kebutuhan yang masih terlalu umum diperbaiki menjadi kebutuhan yang lebih spesifik, terukur, dan dapat diuji.
+
+### 12.1 Data pelanggan harus aman
+
+**Kebutuhan awal:**  
+> Data pelanggan harus aman.
+
+**Perbaikan:**  
+Data pribadi pelanggan seperti nomor HP, email, dan alamat hanya dapat diakses oleh admin yang memiliki hak akses.
+
+**Kriteria pengujian:**  
+Pengguna tanpa hak akses admin tidak dapat melihat data pribadi pelanggan.
+
+### 12.2 Sistem harus cepat mencari barang
+
+**Kebutuhan awal:**  
+> Sistem harus cepat mencari barang.
+
+**Perbaikan:**  
+Sistem harus dapat menampilkan hasil pencarian barang berdasarkan kode atau nama barang dalam waktu maksimal 3 detik.
+
+**Kriteria pengujian:**  
+Ketika pengguna melakukan pencarian berdasarkan kode atau nama barang, hasil pencarian harus ditampilkan dalam waktu maksimal 3 detik.
+
+### 12.3 Laporan stok harus akurat
+
+**Kebutuhan awal:**  
+> Laporan stok harus akurat.
+
+**Perbaikan:**  
+Jumlah stok yang ditampilkan dalam sistem harus sesuai dengan hasil pencatatan transaksi barang masuk dan barang keluar serta tidak boleh bernilai negatif.
+
+**Kriteria pengujian:**  
+Jumlah stok pada sistem dapat ditelusuri berdasarkan transaksi barang dan sistem menolak transaksi yang menyebabkan stok menjadi negatif.
