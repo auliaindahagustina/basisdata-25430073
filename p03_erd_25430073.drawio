@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" pages="3">
+<mxfile host="app.diagrams.net" pages="4">
   <diagram name="ERD UTAMA" id="Ys9BU8zjZ9rJ_zqYEICi">
     <mxGraphModel dx="1946" dy="1244" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -842,6 +842,14 @@
         <mxCell id="MNfOtGjpbm0A17CIuyfL-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;align=left;" value="&lt;p&gt;&lt;strong style=&quot;background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;&lt;font style=&quot;font-size: 15px;&quot;&gt;Keterangan Simbol Kardinalitas:&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;strong&gt;Satu (1):&lt;/strong&gt; Setiap entitas berhubungan dengan tepat satu entitas lain.&lt;/font&gt;&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;strong&gt;Nol atau satu (0..1):&lt;/strong&gt; Hubungan bersifat opsional, maksimal satu.&lt;/font&gt;&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;strong&gt;Nol atau banyak (0..N):&lt;/strong&gt; Hubungan bersifat opsional dan dapat melibatkan banyak entitas.&lt;/font&gt;&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;strong&gt;Satu atau banyak (1..N):&lt;/strong&gt; Minimal satu dan dapat melibatkan banyak entitas.&lt;/font&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;&lt;font style=&quot;font-size: 16px;&quot;&gt;Keterangan Atribut:&lt;/font&gt;&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;&lt;li&gt;&lt;p&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;strong&gt;PK (Primary Key):&lt;/strong&gt; Atribut kunci utama untuk membedakan setiap data.&lt;/font&gt;&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;strong&gt;FK (Foreign Key):&lt;/strong&gt; Atribut kunci asing yang menghubungkan satu entitas dengan entitas lain.&lt;/font&gt;&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;strong&gt;PK, FK:&lt;/strong&gt; Atribut yang berfungsi sebagai kunci utama sekaligus kunci asing.&lt;/font&gt;&lt;/p&gt;&lt;/li&gt;&lt;li&gt;&lt;p&gt;&lt;font style=&quot;font-size: 14px;&quot;&gt;&lt;strong style=&quot;&quot;&gt;Turunan:&lt;/strong&gt; Atribut yang nilainya diperoleh dari perhitungan atribut lain.&lt;/font&gt;&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;" vertex="1">
           <mxGeometry height="300" width="680" x="180" y="630" as="geometry" />
         </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram name="Salinan dari ERD PROYEK" id="ti5bXS16w9k-NzvLaewS">
+    <mxGraphModel dx="3336" dy="2132" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="P0ZzXv-EBamqijuGiE0v-0" />
+        <mxCell id="P0ZzXv-EBamqijuGiE0v-1" parent="P0ZzXv-EBamqijuGiE0v-0" />
       </root>
     </mxGraphModel>
   </diagram>
